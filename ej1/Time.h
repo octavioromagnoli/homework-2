@@ -12,11 +12,7 @@ class Time{
     string meridiem;
   public:
 
-    Time();
-    Time(int hours);
-    Time(int hours, int minutes);
-    Time(int hours, int minutes, int seconds);
-    Time(int hours, int minutes, int seconds, string meridiem);
+    Time(int hours = 0, int minutes = 0, int seconds = 0, string meridiem = "a.m.");
 
     void sethour(int newhour);
     void setminutes(int newminutes);

@@ -4,33 +4,9 @@
 #include<iomanip>
 using namespace std;
 
-Time::Time(): hours(0), minutes(0), seconds(0), meridiem("a.m."){
-}
-
-Time::Time(int hours): hours(hours), minutes(0), seconds(0), meridiem("a.m."){
-  if(hours < 1 || hours > 12) 
-    throw invalid_argument("La hora ingresada es inválida: debe estar entre 1 y 12");
-}
-
-Time::Time(int hours, int minutes): hours(hours), minutes(minutes), seconds(0), meridiem("a.m."){
-  if(hours < 1 || hours > 12) 
-    throw invalid_argument("La hora ingresada es inválida: debe estar entre 1 y 12");
-  if(minutes < 0 || minutes > 59) 
-    throw invalid_argument("Los minutos ingresados son inválidos: deben estar entre 0 y 59");
-}
-
-Time::Time(int hours, int minutes, int seconds): hours(hours), minutes(minutes), seconds(seconds), meridiem("a.m."){
-  if(hours < 1 || hours > 12) 
-    throw invalid_argument("La hora ingresada es inválida: debe estar entre 1 y 12");
-  if(minutes < 0 || minutes > 59) 
-    throw invalid_argument("Los minutos ingresados son inválidos: deben estar entre 0 y 59");
-  if(seconds < 0 || seconds > 59) 
-    throw invalid_argument("Los segundos ingresados son inválidos: deben estar entre 0 y 59");
-}
-
 Time::Time(int hours, int minutes, int seconds, string meridiem): hours(hours), minutes(minutes), seconds(seconds), meridiem(meridiem){
-  if(hours < 1 || hours > 12) 
-    throw invalid_argument("La hora ingresada es inválida: debe estar entre 1 y 12");
+  if(hours < 0 || hours > 12) 
+    throw invalid_argument("La hora ingresada es inválida: debe estar entre 0 y 12");
   if(minutes < 0 || minutes > 59) 
     throw invalid_argument("Los minutos ingresados son inválidos: deben estar entre 0 y 59");
   if(seconds < 0 || seconds > 59) 
@@ -41,8 +17,8 @@ Time::Time(int hours, int minutes, int seconds, string meridiem): hours(hours), 
 }
   
 void Time::sethour(int newhour) {
-  if(newhour < 1 || newhour > 12)
-    throw invalid_argument("La hora ingresada es inválida: debe estar entre 1 y 12");
+  if(newhour < 0 || newhour > 12)
+    throw invalid_argument("La hora ingresada es inválida: debe estar entre 0 y 12");
   hours = newhour;
 }
 
@@ -97,7 +73,16 @@ string Time::getTime() const {
   return out.str();
 }
 
+
+// CORREGIR ESTE
 void Time::showTime() const{
   cout << setfill('0');
-  cout << setw(2) << (hours + 12) % 24 << ":" << setw(2) << minutes << ":" << setw(2) << seconds << " " << meridiem << endl;
+  int hour24;
+    
+  if (meridiem == "a.m.") {
+      hour24 = (hours == 12) ? 0 : hours; 
+  } else {
+      hour24 = (hours == 12) ? 12 : hours + 12;
+  }
+  cout << setw(2) << hour24 << "h:" << setw(2) << minutes << "m:" << setw(2) << seconds << "s"<<endl;
 }

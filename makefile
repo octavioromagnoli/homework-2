@@ -3,7 +3,7 @@ run1: ej1/main1.cpp ej1/Time.cpp ej1/Time.h
 	./1
 
 clear:
-	rm 1
-	rm 2
-	rm 3
-	rm 4
+	rm -f 1
+	rm -f 2
+	rm -f 3
+	rm -f 4
