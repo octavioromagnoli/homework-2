@@ -6,6 +6,11 @@
 *.lo
 *.o
 *.obj
+# Specific executables
+1
+2
+3
+4
 
 # Precompiled Headers
 *.gch
