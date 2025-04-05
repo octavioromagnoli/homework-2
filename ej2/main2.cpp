@@ -1,5 +1,6 @@
 #include <iostream>
-#include "CourseStudent.h"
+#include "Course.h"
+#include "Student.h"
 #include <algorithm>
 using namespace std;
 
