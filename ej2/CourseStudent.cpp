@@ -138,10 +138,12 @@ const double Student::getMean()
 
   for (auto &i : courses)
   {
-    result += i.second;
-    counter += 1;
+    if (!i.first.expired()) {
+      result += i.second;
+      counter += 1;
+    }
   }
-  return result / counter;
+  return counter > 0? result / counter : 0;
 }
 
 // Sobrecarga del operador < para comparar estudiantes por nombre.
@@ -153,18 +155,18 @@ bool Student::operator<(const Student &other) const
 // Inscribe al estudiante en un curso con una calificación.
 void Student::enrollCourse(shared_ptr<Course> newCourse, int grade)
 {
-  courses.push_back(make_pair(newCourse, grade));
+  courses.push_back(make_pair(weak_ptr<Course>(newCourse), grade));
 }
 
 // Elimina al estudiante de un curso.
-void Student::leaveCourse(shared_ptr<Course> course)
-{
-  for (auto it = this->courses.begin(); it != this->courses.end(); ++it)
-  {
-    if (it->first.get() == course.get())
-    {
-      this->courses.erase(it);
-      break;
+void Student::leaveCourse(shared_ptr<Course> course) {
+  for (auto it = this->courses.begin(); it != this->courses.end(); ++it) {
+    // Se lockea el weak ptr para comparar
+    if (auto sharedCourse = it->first.lock()) {
+      if (sharedCourse.get() == course.get()) {
+        this->courses.erase(it);
+        break;
+      }
     }
   }
 }

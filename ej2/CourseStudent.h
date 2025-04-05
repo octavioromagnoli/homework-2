@@ -79,7 +79,7 @@ class Student
 private:
   string name;
   int legacy;
-  list<pair<shared_ptr<Course>, double>> courses;
+  list<pair<weak_ptr<Course>, double>> courses;
 
 public:
   Student(string, int);
