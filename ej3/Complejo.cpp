@@ -75,12 +75,17 @@ unique_ptr<Numero> Complejo::divide(const Numero *otro)
   double c = otroComplejo->getRealPart();
   double d = otroComplejo->getImaginaryPart();
 
-  double coefRealPart = ((a*c)+(b*d)) / ((c*c)+(d*d));
-  double coefImagPart = ((b*c)-(a*d)) / ((c*c)+(d*d));
+  double denominator = (c * c) + (d * d);
+  if (denominator == 0)
+  {
+    throw invalid_argument("División por cero no permitida");
+  }
+
+  double coefRealPart = ((a * c) + (b * d)) / denominator;
+  double coefImagPart = ((b * c) - (a * d)) / denominator;
 
   return make_unique<Complejo>(coefRealPart, coefImagPart);
 }
-
 
 string Complejo::toString()
 {

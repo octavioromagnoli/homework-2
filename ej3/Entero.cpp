@@ -53,6 +53,10 @@ unique_ptr<Numero> Entero::divide(const Numero *otro)
   {
     throw std::invalid_argument("Se esperaba un Entero");
   }
+  if (otroEntero->getValor() == 0)
+  {
+    throw std::invalid_argument("División por cero no permitida");
+  }
   return make_unique<Entero>(this->valor / otroEntero->getValor());
 }
 

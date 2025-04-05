@@ -53,6 +53,11 @@ unique_ptr<Numero> Real::divide(const Numero *otro)
   {
     throw invalid_argument("Se esperaba un número Real");
   }
+  if (otroReal->getValor() == 0)
+  {
+    throw std::invalid_argument("División por cero no permitida");
+  }
+
   return make_unique<Real>(this->valor / otroReal->getValor());
 }
 
