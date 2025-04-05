@@ -38,11 +38,12 @@ int main() {
   bool inputok = true;
 
   do{
-    cout<<"Qué formato vas a querer ingresar?"<<endl<<
-    "(1) Solo hora"<<endl<<
-    "(2) Hora y minutos"<<endl<<
-    "(3) Hora, minutos, segundos"<<endl<<
-    "(4) Hora, minutos, segundos, meridiano"<<endl;
+    cout << "Seleccione el formato de ingreso:" << endl
+       << "  (1) Solo hora" << endl
+       << "  (2) Hora y minutos" << endl
+       << "  (3) Hora, minutos y segundos" << endl
+       << "  (4) Hora, minutos, segundos y meridiano (a.m./p.m.)" << endl
+       << "Ingrese su opción: ";
     cin >> selected;
 
     if(cin.fail()){
@@ -197,7 +198,7 @@ int main() {
         if (handleInputError() == 2) {
           try {
             tobj.sethour(HH);
-            cout << "Hora actualizada a " << tobj.getTime() << endl;
+            cout <<endl<< "Hora actualizada a " << tobj.getTime() << endl;
           } catch (const invalid_argument& e) {
             cout << "Error, " << e.what() << endl;
           }
@@ -210,7 +211,7 @@ int main() {
         if (handleInputError() == 2) {
           try {
             tobj.setminutes(MM);
-            cout << "Minutos actualizados a " << tobj.getTime() << endl;
+            cout <<endl<< "Minutos actualizados a " << tobj.getTime() << endl;
           } catch (const invalid_argument& e) {
             cout << "Error, " << e.what() << endl;
           }
@@ -223,7 +224,7 @@ int main() {
         if (handleInputError() == 2) {
           try {
             tobj.setseconds(SS);
-            cout << "Segundos actualizados a " << tobj.getTime() << endl;
+            cout <<endl<< "Segundos actualizados a " << tobj.getTime() << endl;
           } catch (const invalid_argument& e) {
             cout << "Error, " << e.what() << endl;
           }
@@ -236,7 +237,7 @@ int main() {
         if (handleInputError() == 2) {
           try {
             tobj.setmeridian(MER);
-            cout << "Meridiano actualizado a " << tobj.getTime() << endl;
+            cout <<endl<< "Meridiano actualizado a " << tobj.getTime() << endl;
           } catch (const invalid_argument& e) {
             cout << "Error, " << e.what() << endl;
           }
@@ -244,35 +245,35 @@ int main() {
         break;
 
       case 5:
-        cout << "La hora actual es: " << tobj.gethour() << endl;
+        cout <<endl<< "La hora actual es: " << tobj.gethour() << endl;
         break;
 
       case 6:
-        cout << "Los minutos actuales son: " << tobj.getminutes() << endl;
+        cout <<endl<< "Los minutos actuales son: " << tobj.getminutes() << endl;
         break;
 
       case 7:
-        cout << "Los segundos actuales son: " << tobj.getseconds() << endl;
+        cout <<endl<< "Los segundos actuales son: " << tobj.getseconds() << endl;
         break;
 
       case 8:
-        cout << "El meridiano actual es: " << tobj.getmeridiem() << endl;
+        cout <<endl<< "El meridiano actual es: " << tobj.getmeridiem() << endl;
         break;
 
       case 9:
-        cout << "La hora en formato a.m./p.m. es: " << tobj.getTime() << endl;
+        cout <<endl<< "La hora en formato a.m./p.m. es: " << tobj.getTime() << endl;
         break;
 
       case 10:
-        cout << "La hora en formato 24 horas es: "; tobj.showTime();
+        cout <<endl<< "La hora en formato 24 horas es: "; tobj.showTime();
         break;
 
       case 11:
-        cout << "Saliendo del programa." << endl;
+        cout <<endl<< "Saliendo del programa." << endl;
         return 0;
 
       default:
-        cout << "Opción inválida. Saliendo del programa." << endl;
+        cout <<endl<< "Opción inválida. Saliendo del programa." << endl;
         return 0;
     }
   }
