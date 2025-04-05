@@ -18,9 +18,9 @@ private:
 
 public:
   Student(string, int);
-  const string getName();
-  const int getLegacy();
-  const double getMean();
+  string getName() const;
+  int getLegacy() const;
+  double getMean() const;
   void enrollCourse(shared_ptr<Course>, int grade);
   void leaveCourse(shared_ptr<Course>);
 

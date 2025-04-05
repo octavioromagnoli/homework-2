@@ -47,6 +47,7 @@
     "iomanip": "cpp",
     "sstream": "cpp",
     "ctime": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "complex": "cpp"
   }
 }
