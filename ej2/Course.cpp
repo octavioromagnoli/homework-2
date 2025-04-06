@@ -98,6 +98,13 @@ const string Course::getSubject() const
   return subject;
 }
 
+Student& Course::getStudent(int legacy) const
+{
+  if (legacy < 0 || legacy >= members) {
+    throw std::out_of_range("Invalid index for participants");
+  }
+  return *participants[legacy];
+}
 // Cambia la materia del curso.
 void Course::setSubject(string newSubject) {
   subject = newSubject;

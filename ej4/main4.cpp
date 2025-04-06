@@ -9,22 +9,29 @@ int main()
   CuentaCorriente cuenta(500, "Juan Pérez", &caja);
 
   cout << "=== Prueba de CajaAhorro ===" << endl;
-  caja.mostrarInfo(); // Primera consulta
-  caja.mostrarInfo(); // Segunda consulta
-  caja.mostrarInfo(); // Tercera consulta (debe aplicarse el cargo)
+  cout<<endl<<"Se excederan las 2 consultas para comprobar que se aplique el cargo:"<<endl;
+  caja.mostrarInfo(); 
+  caja.mostrarInfo();
+  caja.mostrarInfo();
 
   cout << "\n=== Prueba de retiro de CajaAhorro ===" << endl;
-  caja.retirar(500); // Debe permitir el retiro
+  cout<<endl<<"Se retirarán $500, un monto costeable por el balance de la caja:"<<endl;
+  caja.retirar(500);
   caja.mostrarInfo();
-  caja.retirar(5000); // Debe rechazar el retiro por fondos insuficientes
+  cout<<endl<<"Se intentará retirar un valor que excede el balance de la caja:"<<endl;
+  caja.retirar(5000);
 
-  cout << "\n=== Prueba de CuentaCorriente ===" << endl;
+  cout << "\n=== Prueba de CuentaCorriente ===" << endl<<endl;
   cuenta.mostrarInfo();
-  cuenta.retirar(300); // Debe permitir el retiro
+  cout<<endl<<"Se retiraran 300:"<<endl;
+  cuenta.retirar(300);
   cuenta.mostrarInfo();
 
   cout << "\n=== Prueba de retiro excediendo el balance de CuentaCorriente ===" << endl;
-  cuenta.retirar(500); // Debe intentar retirar de la caja de ahorro
+  cout<<endl<<"Estado actual de la cuenta:"<<endl;
+  cuenta.mostrarInfo();
+  cout<<endl<<"Se intentarán retirar 500:"<<endl;
+  cuenta.retirar(500);
   cuenta.mostrarInfo();
   caja.mostrarInfo();
 

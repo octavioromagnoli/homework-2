@@ -71,3 +71,15 @@ void Student::leaveCourse(shared_ptr<Course> course)
     }
   }
 }
+
+// Muestra la lista de cursos y sus notas.
+void Student::showCourses() const
+{
+  for (const auto &course : courses)
+  {
+    if (auto sharedCourse = course.first.lock())
+    {
+      cout << "Curso: " << sharedCourse->getSubject() << ", Nota: " << course.second << endl;
+    }
+  }
+}

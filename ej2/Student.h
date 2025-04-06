@@ -21,6 +21,7 @@ public:
   string getName() const;
   int getLegacy() const;
   double getMean() const;
+  void showCourses() const;
   void enrollCourse(shared_ptr<Course>, int grade);
   void leaveCourse(shared_ptr<Course>);
 

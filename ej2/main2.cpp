@@ -71,6 +71,7 @@ int main()
 
   cout << "Se creó el aula de química, copiando a matemática: " << endl
        << *quimica;
+  quimica->setSubject("Química");
 
   do
   {
@@ -80,7 +81,7 @@ int main()
     cout << "3. Chequear si un alumno está en la clase, segun legajo\n";
     cout << "4. Chequear si la clase está llena\n";
     cout << "5. Ver lista de estudiantes\n";
-    cout << "6. Salir\n";
+    cout << "6. Salir (Continuar a estudiante)\n";
     cout << "Seleccione una opción: ";
     cin >> option;
 
@@ -161,6 +162,23 @@ int main()
         return 0;
     }
   } while (option != 6);
+
+  int legajo;
+  cout <<endl<<*quimica<< "Seleccione un estudiante del curso Química ingresando su legajo: ";
+  cin >> legajo;
+
+  auto presencia = quimica->checkPresence(legajo);
+  if (presencia == -1)
+  {
+    cout << "No se encontró un estudiante con ese legajo en el curso Química." << endl;
+  }
+  else
+  {
+    Student& estudiante = quimica->getStudent(legajo);
+    cout << "Estudiante seleccionado: " << estudiante.getName() << " - Legajo: " << estudiante.getLegacy() << endl<<endl;
+    cout<<"Su lista de cursos es: "<<endl; estudiante.showCourses();
+    cout<< "Su promedio general es : "<< estudiante.getMean()<<endl;
+  }
 
   return 0;
 }

@@ -55,11 +55,12 @@ public:
     auto newCourse = create(original.getSubject());
     for (auto &estudiante : original.participants)
     {
-      newCourse->participants.push_back(estudiante);
+      newCourse->addStudent(estudiante, 10); //Inicialmente, todos tienen 10, 
     }
     return newCourse;
   }
 
+  Student& getStudent(int) const;
   void addStudent(shared_ptr<Student>, int);
   void removeStudent(shared_ptr<Student>);
   void removeStudent(int);
