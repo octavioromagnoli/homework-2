@@ -9,7 +9,8 @@ class Cuenta
 protected:
   double balance;
   string titularCuenta;
-
+// Establezco el balance y el titular como protected para que puedan ser accedidos por subclases derivadas
+// sin hacerlos públicos. Así la subclase puede utilizarlos pero el usuario no puede acceder.
 public:
   Cuenta(double balance, string titularCuenta);
   void depositar(double amount);
@@ -29,6 +30,7 @@ public:
 
 private:
   int consultas;
+  // El número de consultas solo debe ser modificado por el propio objeto, por lo que lo establezco privado.
 };
 
 class CuentaCorriente : public Cuenta
@@ -42,4 +44,6 @@ public:
 
 private:
   CajaAhorro *cajaAsociada;
+  // La caja de ahorro asociada solo debe accederse en el propio objeto, por lo que la establezco como privadas.
+
 };

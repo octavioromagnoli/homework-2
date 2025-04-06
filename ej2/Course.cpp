@@ -98,6 +98,7 @@ const string Course::getSubject() const
   return subject;
 }
 
+// Retorna una referencia a un estudiante del curso
 Student& Course::getStudent(int legacy) const
 {
   if (legacy < 0 || legacy >= members) {

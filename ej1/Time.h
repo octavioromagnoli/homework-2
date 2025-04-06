@@ -13,6 +13,7 @@ private:
   string meridiem;
 
 public:
+  // Setteo valores default para poder instanciar con parámetros faltantes
   Time(int hours = 0, int minutes = 0, int seconds = 0, string meridiem = "a.m.");
 
   void sethour(int newhour);

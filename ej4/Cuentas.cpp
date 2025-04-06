@@ -8,7 +8,7 @@ Cuenta::Cuenta(double balance, string titularCuenta) : balance(balance), titular
 Cuenta::~Cuenta() {
 }
 
-
+// depositar dinero en la cuenta, lanza una excepción si el monto es negativo
 void Cuenta::depositar(double amount)
 {
   if (amount < 0)
@@ -20,6 +20,7 @@ void Cuenta::depositar(double amount)
 
 CajaAhorro::CajaAhorro(double balance, string titular) : Cuenta(balance, titular), consultas(0) {}
 
+// Método para retirar dinero de la caja de ahorro, verifica si hay fondos suficientes
 bool CajaAhorro::retirar(double cantidad)
 {
   if (cantidad <= 0)
@@ -38,6 +39,7 @@ bool CajaAhorro::retirar(double cantidad)
   return true;
 }
 
+// Método para mostrar la información de la caja de ahorro
 void CajaAhorro::mostrarInfo()
 {
   consultas++;
@@ -56,8 +58,10 @@ void CajaAhorro::mostrarInfo()
   }
 }
 
+// Constructor
 CuentaCorriente::CuentaCorriente(double balance, string titular, CajaAhorro *cajaAsociada) : Cuenta(balance, titular), cajaAsociada(cajaAsociada) {}
 
+// Método para retirar dinero de la cuenta corriente, permite usar fondos de la caja de ahorro asociada si es necesario
 bool CuentaCorriente::retirar(double cantidad)
 {
   if (cantidad <= 0)
@@ -90,6 +94,7 @@ bool CuentaCorriente::retirar(double cantidad)
   return true;
 }
 
+// Método para mostrar la información de la cuenta corriente, incluye información de la caja de ahorro asociada si existe
 void CuentaCorriente::mostrarInfo() {
   std::cout << "=== Información de Cuenta Corriente ===" << std::endl;
   std::cout << "Titular: " << titularCuenta << std::endl;
